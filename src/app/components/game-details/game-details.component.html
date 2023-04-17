@@ -1,0 +1,147 @@
+<div *ngIf="isLoading" class="landing   justify-content-center align-items-center">
+    <span class="loader"></span>
+</div>
+<div class="mt-4 py-3"></div>
+
+<section class="min-vh-100 w-100 m-0 position-relative  mt-4 "   style="background-image: url({{backgroundSrc}}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+  <div class="w-100 min-vh-100 h-100 position-relative mt-4 pt-4 top-0 bottom-0 start-0 end-0" style="background-color: #31373bef;"  >
+ <div class="row w-75 mx-auto mt-5 py-4 "  >
+      <div class="col-md-5 col-sm-12">
+        <div class="thumbnail mb-2">
+          <div class="position-relative w-100 mb-4 pb-3">
+          <video    (mouseleave)="addPic()" id="gameVid" class="w-100 h-100" src="https://www.freetogame.com/g/{{gameDetail?.id}}/videoplayback.webm"  ></video>
+          <div class="position-absolute w-100 top-0">
+            <img  (mouseover)="removePic()" id="gameImg" class="w-100 h-100 mb-3 " [src]="gameDetail?.thumbnail"  alt="">
+          </div>
+          </div>
+        </div>
+        <div class="buttonsContainer row mb-3">
+          <div class="col-4">
+            <button class="btn btn-dark text-muted fs-4 " > free</button>
+          </div>
+          <div class="col-8">
+            <a [href]="gameDetail?.game_url" target="_blank">
+              <button class="btn btn-info w-100 text-white fs-4" > Play Now <i class="fas fa-sign-out-alt"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <h2 class="text-white"> {{ gameDetail?.title }}</h2>
+        <h4 class="text-muted">about  {{ gameDetail?.title }} </h4>
+        <p class=" text-muted  mb-3 ">
+          <strong class="text-secondary">
+            {{ gameDetail?.description }}
+          </strong>
+        </p>
+        <div class="minRequirements" *ngIf="gameDetail?.minimum_system_requirements">
+          <h4 class="text-white" >minmum requirements</h4>
+          <ul class="list-unstyled ms-3 fs-5"  >
+            <li class="text-white py-2" *ngIf="gameDetail?.minimum_system_requirements?.graphics!='?'">
+              <strong class="text-secondary" >graphics : </strong>
+                {{gameDetail?.minimum_system_requirements?.graphics}}
+
+            </li>
+            <li class="text-white py-2"  *ngIf="gameDetail?.minimum_system_requirements?.memory!='?'">
+              <strong class="text-secondary" >memory : </strong>
+                {{gameDetail?.minimum_system_requirements?.memory}}
+
+            </li>
+            <li class="text-white py-2" *ngIf="gameDetail?.minimum_system_requirements?.os!='?'">
+              <strong class="text-secondary" >OS : </strong>
+                {{gameDetail?.minimum_system_requirements?.os}}
+
+            </li>
+            <li class="text-white py-2" *ngIf="gameDetail?.minimum_system_requirements?.processor!='?'">
+              <strong class="text-secondary" >processor : </strong>
+                {{gameDetail?.minimum_system_requirements?.processor}}
+
+            </li>
+            <li class="text-white py-2" *ngIf="gameDetail?.minimum_system_requirements?.storage!='?'">
+              <strong class="text-secondary" >storage : </strong>
+                {{gameDetail?.minimum_system_requirements?.storage}}
+
+            </li>
+          </ul>
+                  </div>
+
+          <h4 class="text-white my-3">
+            {{ gameDetail?.title }}  screenshots
+          </h4>
+         <owl-carousel-o [options]="customOptions">
+
+        <ng-container *ngFor="let img of gameDetail?.screenshots">
+        <ng-template carouselSlide [id]="img.id">
+          <img [src]="img.image">
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+
+        <div class="moreInfo mt-3">
+          <h4 class="text-white">Additional information</h4>
+          <div class="row gy-3 mt-2 text-white justify-text-between">
+            <div class="col-md-4 col-sm-6"  *ngIf=" gameDetail?.title"   >
+              <h4 class="text-secondary">Title</h4>
+              <p>
+                 {{ gameDetail?.title }}
+              </p>
+
+            </div>
+            <div   class="col-md-4 col-sm-6"   *ngIf=" gameDetail?.developer"   >
+              <h4 class="text-secondary">Developer</h4>
+              <p> {{ gameDetail?.developer }}</p>
+            </div>
+            <div class="col-md-4 col-sm-6"   *ngIf=" gameDetail?.publisher"
+            >
+          <h4 class="text-secondary">
+            Publisher
+          </h4>
+        <p>
+          {{ gameDetail?.publisher }}
+        </p>
+        </div>
+            <div class="col-md-4 col-sm-6"   *ngIf=" gameDetail?.release_date"
+            >
+          <h4 class="text-secondary">
+            Release Date
+
+          </h4>
+        <p>
+          {{ gameDetail?.release_date }}
+        </p>
+        </div>
+            <div class="col-md-4 col-sm-6"   *ngIf=" gameDetail?.genre"   >
+          <h4 class="text-secondary">
+           Genre
+
+          </h4>
+        <p>
+          {{ gameDetail?.genre }}
+        </p>
+        </div>
+            <div class="col-md-4 col-sm-6"   *ngIf=" gameDetail?.platform"   >
+          <h4 class="text-secondary">
+           Platform
+
+          </h4>
+        <p>
+          {{ gameDetail?.platform }}
+        </p>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<div class="log py-5 ">
+<div class=" container py-5 px-0 ">
+        <div class="row px-0">
+            <div class="col-md-6 p-0">
+                <img class="w-100 h-100" src="../../assets/gaming.ebaf2ffc84f4451d.jpg" alt="">
+            </div>
+            <div class="col-md-6 py-4 text-center">
+
+                <h2 class="text-muted py-3">Create an account</h2>
+                <div class="py-2 w-75 mx-auto border-bottom  border-secondary border-opacity-25">
+                    <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm" action="">
+                            <input formControlName="name"  class="text-muted form-control mb-3 bg-dark " type="text" placeholder=" name">
+                              <div class="alert alert-danger" *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched">
+                                <p *ngIf="registerForm.get('name')?.getError('required')">name is required</p>
+                                <p *ngIf="registerForm.get('name')?.getError('minlength')" >at least 2 letters</p>
+                                <p *ngIf="registerForm.get('name')?.getError('maxlength')">at max 10 letters</p>
+
+
+
+
+                        </div>
+                        <input formControlName="email" class="text-muted form-control mb-3 bg-dark " type="text" placeholder="Email">
+                             <div class="alert alert-danger" *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+                                <p *ngIf="registerForm.get('email')?.getError('required')">mail is required</p>
+                                <p *ngIf=" registerForm.get('email')?.getError('email')  " >mail is not valid</p>
+                              </div>
+                        <input formControlName="phone" class="text-muted form-control my-3 bg-dark " type="tel" placeholder="phone">
+                              <div class="alert alert-danger" *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched">
+                                <p *ngIf=" registerForm.get('phone')?.getError('required')">phone is required</p>
+                                <p *ngIf=" registerForm.get('phone')?.getError('pattern')">enter a valid number</p>
+                              </div>
+                        <input formControlName="password" class="text-muted form-control my-3 bg-dark" type="password" placeholder="Password">
+                               <div class="alert alert-danger" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+                                <p *ngIf="registerForm.get('password')?.getError('required')">password is required</p>
+                                <p *ngIf="registerForm.get('password')?.getError('pattern')">password must start with uppercase and at least 6 char</p>
+
+                              </div>
+                        <input formControlName="rePassword" class="text-muted form-control my-3 bg-dark" type="password" placeholder="rePassword">
+                               <div class="alert alert-danger" *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
+                                <p *ngIf="registerForm.get('rePassword')?.getError('required')">rePassword is required</p>
+                                <p *ngIf="registerForm.get('rePassword')?.getError('pattern')">rePassword must start with uppercase and at least 6 char</p>
+
+                              </div>
+                              <div *ngIf="apiError" class="alert alert-danger">
+                                <h4>{{apiError}}</h4>
+                              </div>
+                        <button [disabled]="registerForm.invalid" class="btn btn-secondary my-2  w-100">
+                          <i *ngIf="isLoading" class="fas fa-spinner fa-spin text-white"></i>
+                          <span *ngIf="!isLoading" > Create Account</span>
+                         </button>
+                    </form>
+
+                </div>
+                <div class="py-2 w-75 mx-auto text-center">
+
+                    <p class="my-3 text-muted">already a member? <a routerLink="/login">Login</a></p>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

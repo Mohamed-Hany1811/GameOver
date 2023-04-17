@@ -1,0 +1,68 @@
+<!-- <div *ngIf="isLoading" class="landing  justify-content-center align-items-center">
+    <span class="loader"></span>
+</div>
+
+ -->
+
+
+
+
+<div class="homePic text-center position-relative pt-4 mt-4  border-3 border-secondary border-bottom  shadow-bottom shadow-lg">
+    <div class="imgContainer mt-3">
+
+        <img src="../../../assets/imge1.png" alt="">
+    </div>
+    <div class="picLayer bg-black bg-opacity-25 position-absolute top-0 end-0 start-0 bottom-0 d-flex align-items-center justify-content-center">
+<div class="container">
+
+        <h2 class="h1 text-secondary mb-3">
+    Find & track the best <span class="text-info">free-to-play</span>  games!
+</h2>
+<p class="text-secondary fs-5 mb-3">
+    Track what you've played and search for what to play next! Plus get free premium loot!
+</p>
+<a routerLink="/all">
+<button class="btn btn-outline-secondary">Browse Games</button>
+</a>
+</div>
+
+    </div>
+
+</div>
+<div class="reccomendation w-75 mx-auto mt-3 py-4">
+<h2 class="text-secondary" >
+    <i class="fa-solid fa-robot"></i>
+    Personalized Recommendations
+</h2>
+
+<div *ngIf="isLoading" class="row py-3  g-3">
+  <div class="game col-xl-4  col-md-12 px-3" *ngFor="let i of [].constructor(iterationCount); let index = index">
+<div class="card w-100">
+    <div class="card__image"></div>
+    <div class="card__content">
+      <p></p>
+    </div>
+</div>
+  </div>
+</div>
+
+<div class="row py-3  g-3">
+
+  <div class=" game col-xl-4  col-md-12 px-3 grow " *ngFor="let game of games" >
+        <div class="grow-item">
+        <a [routerLink]="['/game-details', game.id]" class="text-decoration-none">
+              <div   class="bg-black bg-opacity-50 " >
+               <img class="w-100 mb-2" [src]='game.thumbnail' alt="">
+               <div class="gameDet d-flex align-items-center justify-content-between py-4 ">
+
+                      <h3 class=" mx-3 text-secondary">{{game.title}}</h3>
+                      <span class=" bg-primary text-white p-1  rounded-2 mx-3">free</span>
+
+               </div>
+              </div>
+              </a>
+          </div>
+    </div>
+    </div>
+</div>
+

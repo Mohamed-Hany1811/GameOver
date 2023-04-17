@@ -1,0 +1,54 @@
+
+
+<div class="log py-5 ">
+<div class=" container py-5 px-0 ">
+        <div class="row px-0">
+            <div class="col-md-6 p-0">
+                <img class="w-100 h-100" src="../../assets/gaming.ebaf2ffc84f4451d.jpg" alt="">
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="py-4 w-50 mx-auto text-center">
+                    <img class="w-50 mx-auto"  src="../../assets/logo.png" alt="">
+                </div>
+                <h2 class="text-muted">Log in to GameOver</h2>
+                <div class="py-2 w-75 mx-auto border-bottom  border-secondary border-opacity-25">
+                          <form (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm" action="">
+
+                        <input formControlName="email" class="text-muted form-control mb-3 bg-dark " type="text" placeholder="Email">
+                             <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                                <p *ngIf="loginForm.get('email')?.getError('required')">mail is required</p>
+                                <p *ngIf=" loginForm.get('email')?.getError('email')  " >mail is not valid</p>
+                              </div>
+
+                        <input formControlName="password" class="text-muted form-control my-3 bg-dark" type="password" placeholder="Password">
+                               <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                                <p *ngIf="loginForm.get('password')?.getError('required')">password is required</p>
+                                <p *ngIf="loginForm.get('password')?.getError('pattern')">password must start with uppercase and at least 6 char</p>
+
+                              </div>
+
+                              <div *ngIf="apiError" class="alert alert-danger">
+                                <h4>{{apiError}}</h4>
+                              </div>
+                        <button [disabled]="loginForm.invalid" class="btn btn-secondary my-2  w-100">
+                          <i *ngIf="isLoading" class="fas fa-spinner fa-spin text-white"></i>
+                          <span *ngIf="!isLoading" > Create Account</span>
+                         </button>
+                    </form>
+
+                </div>
+                <div class="py-2 w-75 mx-auto text-center">
+                    <a class="my-3" href=""> forgot Password!</a>
+                    <p class="my-3 text-muted">not a member Yet? <a routerLink="/register">create an account</a></p>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

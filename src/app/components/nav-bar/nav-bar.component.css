@@ -1,0 +1,10 @@
+nav{
+    background: #272b30;
+    font-size: 20px;
+    border-bottom: 2px;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    right:0;
+    left: 0;
+}

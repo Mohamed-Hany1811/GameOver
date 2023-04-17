@@ -1,0 +1,54 @@
+<!-- <div *ngIf="isLoading" class="landing  justify-content-center align-items-center">
+    <span class="loader"></span>
+</div> -->
+<div class=" mt-5 p-4 ">
+<div class=" mt-5 p-4 ">
+    <div class="row mt-3 py-4 " >
+      <div id="item" class=" col-lg-3 col-md-4 col-sm-6 p-2 grow shadow" *ngFor="let game of games;  let i = index;" [attr.data-index]='i<10'   >
+          <div class="grow-item">
+          <a class="text-decoration-none" [routerLink]="['/game-details', game.id]">
+          <div class="bg-black bg-opacity-50" >
+             <img class="w-100 mb-2" [src]='game.thumbnail' alt="">
+             <div class="gameDet row pb-2">
+                <div class="col-9">
+
+                    <h3 class="h5 m-1 text-secondary">{{game.title.split("").slice(0,12).join('')}}<span *ngIf="game.title.length>12">...</span></h3>
+                </div>
+                <div class="col-3 text-end ">
+                    <span class=" bg-primary text-white p-1  rounded-2 m-1">free</span>
+                </div>
+                <div class="col-12 mb-2">
+                    <p class="text-muted m-1">{{game.short_description.split("").slice(0,25).join('')}}...</p>
+                    <div class="d-flex align-items-center text-secondary justify-content-between ">
+                        <i class="fas fa-square-plus m-1"></i>
+                        <div class="genreContainer">
+
+                            <span class=" text-black bg-secondary p-1 rounded-2 m-1">{{game.genre}}</span>
+                            <i  *ngIf="game.platform=='PC (Windows)'"  class="fab fa-windows mx-2"></i>
+                            <i *ngIf="game.platform=='Web Browser'" class="fa-solid fa-window-maximize mx-2"></i>
+                        </div>
+                    </div>
+                </div>
+             </div>
+            </div>
+            </a>
+        </div>
+
+</div>
+    </div>
+        <div *ngIf="isLoading" class="row py-3  g-3">
+  <div class="game col-xl-3  col-md-6 px-3" *ngFor="let i of [].constructor(x); let index = index">
+<div class="card w-100">
+    <div class="card__image"></div>
+    <div class="card__content">
+      <p></p>
+    </div>
+</div>
+  </div>
+</div>
+    <div class="text-center" *ngIf="games < gameRange" >
+
+        <button (click)="addmore()" class="btn btn-outline-secondary">show more <i class="fas fa-angle-right"></i>  </button>
+    </div>
+</div>
+</div>

@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary  shadow">
+  <div class="container d-flex justify-content-between align-items-center ">
+    <a class="navbar-brand w-25 " *ngIf="isLogged" routerLink="/home">
+        <img class="w-25" src="../../assets/logo.png" alt=""> <span class="text-white"> Game Over</span>
+    </a>
+    <a class="navbar-brand w-25 " *ngIf="!isLogged" routerLink="/login">
+        <img class="w-25" src="../../assets/logo.png" alt=""> <span class="text-white"> Game Over</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul *ngIf="isLogged"  class="navbar-nav me-auto mb-2 mb-lg-0 text-secondary">
+        <li class="nav-item">
+          <a class="nav-link active text-secondary " aria-current="page" routerLink="home" routerLinkActive="text-white"  >Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-secondary" routerLink="all" routerLinkActive="text-white"  >all</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-secondary"     role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            platform
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item  " [routerLink]='["/platforms/platform-view", "pc"]'   >pc</a>
+            </li>
+            <li>
+              <a class="dropdown-item " [routerLink]='["/platforms/platform-view", "browser"]'>browser</a>
+            </li>
+
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-secondary" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            sort-by
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item " [routerLink]='["sort-by/sort-view", "release-date"]'>release-date</a></li>
+            <li><a class="dropdown-item " [routerLink]='["sort-by/sort-view", "popularity"]'>popularity</a></li>
+            <li><a class="dropdown-item " [routerLink]='["sort-by/sort-view", "alphabetical"]'>alphabetical</a></li>
+            <li><a class="dropdown-item " [routerLink]='["sort-by/sort-view", "relevance"]'>relevance</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-secondary "  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]='["categories/category","racing"]'>racing</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","sports"]'>sports</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","social"]'>social</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","shotter"]'>shotter</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","open-world"]'>open-world</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","zombies"]'>zombies</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","fantasy"]'>fantasy</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","action-rpg"]'>action-rpg</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","action"]'>action</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","flight"]'>flight</a></li>
+            <li><a class="dropdown-item" [routerLink]='["categories/category","battle-royale"]'>battle-royale</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <ul class=" navbar-nav    ms-auto mb-2 mb-lg-0">
+            <li>
+                   <a *ngIf="!isLogged" routerLink="login"> <button class="btn  m-1 text-secondary "   > log in </button></a>
+
+        </li>
+
+        <li>
+          <button *ngIf="isLogged" (click)="  logOut()" class="btn border border-2 border-primary  m-1 text-primary" >log Out</button>
+        </li>
+        <li>
+          <a routerLink="register">
+
+            <button *ngIf="!isLogged" class="btn border border-2 border-primary  m-1 text-primary " >join free </button>
+          </a>
+
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
