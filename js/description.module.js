@@ -3,8 +3,8 @@ export class Description{
     constructor(id){
     this.display=new DisplayGames()
         document.getElementById("closeBtn").addEventListener("click", () => {
-        document.getElementById("home").classList.remove("d-none");
-        document.getElementById("detail").classList.add("d-none");
+         document.getElementById("home").classList.remove("d-none");
+         document.getElementById("detail").classList.add("d-none");
      });
 
      this.ApiforDetails(id);
@@ -12,8 +12,8 @@ export class Description{
     }
     async ApiforDetails(id){
 
-        let loading = document.querySelector(".loading");
-        loading.classList.remove("d-none");
+        let loading = document.querySelector(".loader");
+         loading.classList.remove("d-none");
         const options = {
             method: 'GET',
             headers: {
@@ -25,7 +25,7 @@ export class Description{
         let api= await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options)
         let  desc=await api.json()
         this.display.displayDetails(desc)
-        loading.classList.add("d-none");
+         loading.classList.add("d-none");
     }
 
 

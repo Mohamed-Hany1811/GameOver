@@ -1,14 +1,14 @@
 /// <reference path="../typings/globals/jquery/index.d.ts" />
 export class DisplayGames{
     display(dataforgat){
-      let loading = document.querySelector(".loading");
-      //  loading.classList.add("d-none");
+      let loading = document.querySelector(".loader");
+        loading.classList.add("d-none");
         let temp=''
         dataforgat.forEach((ele)=> {
           temp+=
           `<div class="col">
         
-          <div  id="${ele.id}" class="card p-3  h-100 bg-transparent" style="width: 100%;" >
+          <div  id="${ele.id}" class="card p-3 clickable  h-100 bg-transparent" style="width: 100%;" >
         
           <figure class="position-relative">
             <img class="card-img-top object-fit-cover h-100" src="${ele.thumbnail}" />

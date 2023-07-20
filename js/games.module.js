@@ -16,7 +16,7 @@ import { DisplayGames } from "./display.module.js";
         document.querySelectorAll(".navbar-nav a").forEach((a) => {
            a.addEventListener("click", (e) => {
               this.ApiforCateory(e.target.getAttribute("category"));
-               let loading = document.querySelector(".loading");
+               let loading = document.querySelector(".loader");
                loading.classList.remove("d-none");
            });
         });
